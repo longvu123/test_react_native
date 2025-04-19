@@ -24,7 +24,7 @@ const AuthProvider = (props: IProps) => {
     useEffect(() => {
         const loadUser = async () => {
             const cachedUser = await AsyncStorage.getItem("user");
-
+                        
             if (cachedUser) {
                 setUser(JSON.parse(cachedUser)); // Cập nhật state
             }
@@ -71,7 +71,7 @@ export const useAuth = () => {
     if (!context) {
         throw new Error("useAuth must be used within an AuthProvider");
     }
-    return context;  // Thiếu dòng này
+    return context;  
 }
 
 export default AuthProvider;

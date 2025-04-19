@@ -59,6 +59,12 @@ export default function Layout() {
 											headerShown: false,
 										}}
 									/>
+									<Stack.Screen
+										name="(tabs)/welcome"
+										options={{											
+											headerShown: false,
+										}}
+									/>
 								</Stack>
 							</ThemeProvider>
 						</SafeAreaView>

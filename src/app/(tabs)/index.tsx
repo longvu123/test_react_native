@@ -37,9 +37,24 @@ const styles = StyleSheet.create({
     }
 });
 const dataPageHot = [
-    { key: 1, name: "Top Quán Rating 5* tuần này", ref: "" },
-    { key: 2, name: "Quán Mới Lên Sàn", ref: "" },
-    { key: 3, name: "Ăn Thỏa Thích, Freeship 0Đ", ref: "" },
+    { 
+        key: 1,
+        name: "Top Quán Rating 5* tuần này",
+        description: "khám phá quán mới thật ngon",
+        ref: "" 
+    },
+    {
+        key: 2, 
+        name: "Quán Mới Lên Sàn", 
+        description: "khám phá quán mới thật ngon", 
+        ref: "" 
+    },
+    {
+        key: 3, 
+        name: "Ăn Thỏa Thích, Freeship 0Đ", 
+        description: "khám phá quán mới thật ngon", 
+        ref: "" 
+    },
 ]
 const HomeTab = () => {
 
@@ -49,7 +64,7 @@ const HomeTab = () => {
         <CustomFlatList
             data={dataPageHot}
             style={styles.list}
-            renderItem={({ item }) => <CollectionHome name={item.name} />}
+            renderItem={({ item }) => <CollectionHome name={item.name} description={item.description} />}
             HeaderComponent={<HeaderHome />}
             StickyElementComponent={<SearchHome />}
             TopListElementComponent={<TopListHome />}

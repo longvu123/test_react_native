@@ -2,14 +2,15 @@ import instanceAxios from "@/utils/axios.customize";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const registerApi = (name: string, email: string, password: string) => {
-
-    const v_url_api = `?action=register&username=${name}&email=${email}&password=${password}`;
+    const baseUrl = process.env.EXPO_PUBLIC_API_URL;
+    const v_url_api = `${baseUrl}?action=register&username=${name}&email=${email}&password=${password}`;
     // Lấy tên từ axios từ ultis custome để mục đích gọi từ nhiều server khác nhau
     return instanceAxios.get(v_url_api);
 }
 
 export const loginApi = (username: string, password: string) => {
-    const v_url_api = `?action=login&username=${username}&password=${password}`;
+    const baseUrl = process.env.EXPO_PUBLIC_API_URL;
+    const v_url_api = `${baseUrl}?action=login&username=${username}&password=${password}`;   
     return instanceAxios.get(v_url_api);
 }
 

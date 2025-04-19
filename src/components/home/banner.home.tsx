@@ -41,7 +41,7 @@ function BannerHome() {
     };
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginTop:35 }}>
             <Carousel
                 ref={ref}
                 width={width}
