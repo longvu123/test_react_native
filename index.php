@@ -140,6 +140,9 @@ switch ($action) {
             echo json_encode(logout($token));
         }
         break;
+    case "get_cat":
+        echo dataCate();
+        break;
 
     default:
         echo json_encode(["error" => "API không hợp lệ"]);
@@ -153,5 +156,30 @@ function getBearerToken() {
         }
     }
     return null;
+}
+
+function dataCate() {
+    $dataPageHot = [
+        [
+            "key" => 1,
+            "name" => "Top Quán được 5* tuần này",
+            "description" => "khám phá quán mới thật ngon",
+            "ref" => ""
+        ],
+        [
+            "key" => 2,
+            "name" => "Quán Mới Lên Sàn",
+            "description" => "khám phá quán mới thật ngon",
+            "ref" => ""
+        ],
+        [
+            "key" => 3,
+            "name" => "Ăn Thỏa Thích, Freeship 0Đ",
+            "description" => "khám phá quán mới thật ngon",
+            "ref" => ""
+        ]
+    ];
+    
+    return json_encode($dataPageHot);
 }
 ?>

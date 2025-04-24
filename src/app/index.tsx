@@ -13,15 +13,14 @@ const RootPage = () => {
 	
 	const [appIsReady, setAppIsReady] = useState(false);
 	const { user } = useAuth();
+    
     useEffect(() => {
         async function prepare() {
             try {				
 				// const { logout } = useAuth();
 				// await logout();								
                 await SplashScreen.preventAutoHideAsync();
-                //await new Promise(resolve => setTimeout(resolve, 2000));
-                            
-                			
+                //await new Promise(resolve => setTimeout(resolve, 2000));                                            			
                 if (true) {					
                     await router.replace("/(tabs)");
                 } else {

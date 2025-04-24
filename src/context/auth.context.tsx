@@ -24,7 +24,7 @@ const AuthProvider = (props: IProps) => {
     useEffect(() => {
         const loadUser = async () => {
             const cachedUser = await AsyncStorage.getItem("user");
-                        
+
             if (cachedUser) {
                 setUser(JSON.parse(cachedUser)); // Cập nhật state
             }

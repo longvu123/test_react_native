@@ -4,9 +4,12 @@ import HeaderHome from '@/components/home/header.home';
 import SearchHome from '@/components/home/search.home';
 import TopListHome from '@/components/home/toplist.home';
 import { useAuth } from '@/context/auth.context';
-import { useEffect } from "react";
+import { getListCategory } from '@/utils/api';
+import { useEffect, useState } from "react";
 import * as React from 'react';
+
 import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const styles = StyleSheet.create({
     container: {
@@ -41,30 +44,42 @@ const dataPageHot = [
         key: 1,
         name: "Top Quán Rating 5* tuần này",
         description: "khám phá quán mới thật ngon",
-        ref: "" 
+        refApi: "top-rating" 
     },
     {
         key: 2, 
         name: "Quán Mới Lên Sàn", 
         description: "khám phá quán mới thật ngon", 
-        ref: "" 
+        refApi: "newcomer" 
     },
     {
         key: 3, 
         name: "Ăn Thỏa Thích, Freeship 0Đ", 
         description: "khám phá quán mới thật ngon", 
-        ref: "" 
+        refApi: "top-freeship" 
     },
 ]
+
+
+
 const HomeTab = () => {
-
-
+    const [categories, setCategories] = useState([]);
+        
+    // useEffect(() => {
+    //     const fetCategory = async () => {          
+    //         const res = await getListCategory();                            
+    //         setCategories(res);
+    //     }
+    //     fetCategory();
+    // }, []);
+  
+    
     return (
 
         <CustomFlatList
             data={dataPageHot}
             style={styles.list}
-            renderItem={({ item }) => <CollectionHome name={item.name} description={item.description} />}
+            renderItem={({ item }) => <CollectionHome name={item.name} description={item.description} refApi={item.refApi} />}
             HeaderComponent={<HeaderHome />}
             StickyElementComponent={<SearchHome />}
             TopListElementComponent={<TopListHome />}
