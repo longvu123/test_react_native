@@ -1,7 +1,8 @@
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
  import img_demo from "@/assets/demo.jpg";
 import { APP_COLOR } from "@/utils/constain";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getListProduct } from "@/utils/api";
  
 interface Iprops {
     name: string;
@@ -18,38 +19,19 @@ const styles = StyleSheet.create({
 const CollectionHome = (props: Iprops) => {
     const { name, description, refApi, onPress } = props;
     const [restaurant, setRestaurant] = useState([]);
-    const v_arr_data = [
-        {
-            id: 1,
-            name: "Hoa 1",
-            image: img_demo,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        },
-        {
-            id: 2,
-            name: "Hoa 2",
-            image: img_demo,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        },
-        {
-            id: 3,
-            name: "Hoa 3",
-            image: img_demo,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        },
-        {
-            id: 4,
-            name: "Hoa 4",
-            image: img_demo,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        },
-        {
-            id: 5,
-            name: "Hoa 5",
-            image: img_demo,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        }
-    ];
+    const [product, setProduct] = useState([]);
+   
+
+    useEffect(() => {
+        const fetProduct = async () => {
+            const res = await getListProduct(refApi)
+            setProduct(res);
+        };
+        fetProduct();
+    },[refApi]);
+   
+    
+
     return (
         <>
         <View style={{ backgroundColor:'#ccc', height:10 }}></View>
@@ -62,7 +44,7 @@ const CollectionHome = (props: Iprops) => {
                 <Text style={{ color:'#5a5a5a' }}>{description}</Text>
             </View>
             <FlatList
-                data={v_arr_data}
+                data={product}
                 horizontal={true}
                 contentContainerStyle={{
                     gap:5,
@@ -71,16 +53,21 @@ const CollectionHome = (props: Iprops) => {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item}) => {
+                    
+                    
                     return (
                         <View style={styles.container}>                            
                             <Image 
                                 style={{
                                     height: 125,
-                                    width: 125
+                                    width: 140
                                 }}
-                                source={item.image}/>
-                                <Text style={{fontWeight: 'bold', paddingVertical:5, paddingHorizontal:5}}>{item.name}</Text>
-                                
+                                source={{ uri: item.image }}
+                                resizeMode="cover"
+                               
+                            />
+                                <Text style={{fontWeight: 'bold', paddingVertical:5, paddingHorizontal:5, maxWidth:125}} numberOfLines={2} ellipsizeMode="tail">{item.title}</Text>
+                                <Text style={{fontWeight: 'bold', paddingVertical:5, paddingHorizontal:5}}>{item.price}</Text>                                                                
                         </View>
                     )
                 }}

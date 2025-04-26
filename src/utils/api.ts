@@ -44,6 +44,20 @@ export const getListProductByCate = async (categoryName: string) => {
     const v_url_api = `https://fakestoreapi.com/products/category/jewelery`;
     return instanceAxios.get(v_url_api);
 }
+export const getListProduct = async (refApi:string) => {
+
+    try{
+        const v_url_api = `http://192.168.1.5:9000/index.php?action=get_product&${refApi}`;
+        const response = await axios.get(v_url_api);
+        if(response?.data) return response?.data;
+        return response;
+    }catch(error){
+        console.log(error);
+    }
+
+    const v_url_api = `https://fakestoreapi.com/products/category/jewelery`;
+    return instanceAxios.get(v_url_api);
+}
 
 //check async storage
 export const printAsyncStorage = () => {

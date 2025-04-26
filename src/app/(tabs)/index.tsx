@@ -44,19 +44,19 @@ const dataPageHot = [
         key: 1,
         name: "Top Quán Rating 5* tuần này",
         description: "khám phá quán mới thật ngon",
-        refApi: "top-rating" 
+        refApi: "&page=1&limit=6" 
     },
     {
         key: 2, 
         name: "Quán Mới Lên Sàn", 
         description: "khám phá quán mới thật ngon", 
-        refApi: "newcomer" 
+        refApi: "&page=2&limit=6" 
     },
     {
         key: 3, 
         name: "Ăn Thỏa Thích, Freeship 0Đ", 
         description: "khám phá quán mới thật ngon", 
-        refApi: "top-freeship" 
+        refApi: "&page=3&limit=6" 
     },
 ]
 
